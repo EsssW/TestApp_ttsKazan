@@ -1,0 +1,7 @@
+C:\Users\mukht\source\repos\TestApp\TestApp\bin\Debug\TestApp.dll.config
+C:\Users\mukht\source\repos\TestApp\TestApp\bin\Debug\TestApp.dll
+C:\Users\mukht\source\repos\TestApp\TestApp\bin\Debug\TestApp.pdb
+C:\Users\mukht\source\repos\TestApp\TestApp\obj\Debug\TestApp.csproj.AssemblyReference.cache
+C:\Users\mukht\source\repos\TestApp\TestApp\obj\Debug\TestApp.csproj.CoreCompileInputs.cache
+C:\Users\mukht\source\repos\TestApp\TestApp\obj\Debug\TestApp.dll
+C:\Users\mukht\source\repos\TestApp\TestApp\obj\Debug\TestApp.pdb
