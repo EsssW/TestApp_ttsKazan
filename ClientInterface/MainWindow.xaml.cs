@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace ClientInterface
 {
@@ -11,17 +13,19 @@ namespace ClientInterface
     /// </summary>
     public partial class MainWindow : Window
     {
+        CancellationTokenSource cts = new CancellationTokenSource();
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        public void KeepReportMousePos()
+        public void KeepReportMousePos(CancellationToken cancelToken)
         {
             //Создание и запуск Задачи для делагата
-            Task.Factory.StartNew(() =>
+            Task.Factory.StartNew(() => 
             {
-                while (true)
+                while (!cancelToken.IsCancellationRequested) 
                 {
                     // выполнение делегата Синхронно
                     this.Dispatcher.Invoke(
@@ -43,12 +47,15 @@ namespace ClientInterface
 
         private void Start_btn_Click(object sender, RoutedEventArgs e)
         {
-            KeepReportMousePos();
+            cts.Dispose(); // Очистка старого 
+            cts = new CancellationTokenSource(); // "сброс"
+
+            KeepReportMousePos(cts.Token);
         }
 
         private void Stop_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            cts.Cancel();
         }
     }
 }
