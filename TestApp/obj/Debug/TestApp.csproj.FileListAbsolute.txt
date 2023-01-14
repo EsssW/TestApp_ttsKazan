@@ -5,3 +5,15 @@ C:\Users\mukht\source\repos\TestApp\TestApp\obj\Debug\TestApp.csproj.AssemblyRef
 C:\Users\mukht\source\repos\TestApp\TestApp\obj\Debug\TestApp.csproj.CoreCompileInputs.cache
 C:\Users\mukht\source\repos\TestApp\TestApp\obj\Debug\TestApp.dll
 C:\Users\mukht\source\repos\TestApp\TestApp\obj\Debug\TestApp.pdb
+C:\Users\mukht\source\repos\TestApp\TestApp\bin\Debug\EntityFramework.dll
+C:\Users\mukht\source\repos\TestApp\TestApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\mukht\source\repos\TestApp\TestApp\bin\Debug\SQLite.CodeFirst.dll
+C:\Users\mukht\source\repos\TestApp\TestApp\bin\Debug\System.Data.SQLite.dll
+C:\Users\mukht\source\repos\TestApp\TestApp\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\mukht\source\repos\TestApp\TestApp\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\mukht\source\repos\TestApp\TestApp\bin\Debug\EntityFramework.xml
+C:\Users\mukht\source\repos\TestApp\TestApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\mukht\source\repos\TestApp\TestApp\bin\Debug\System.Data.SQLite.xml
+C:\Users\mukht\source\repos\TestApp\TestApp\obj\Debug\TestApp.csproj.CopyComplete
+C:\Users\mukht\source\repos\TestApp\TestApp\obj\Debug\TestApp.Migrations.init.resources
+C:\Users\mukht\source\repos\TestApp\TestApp\obj\Debug\TestApp.csproj.GenerateResource.cache

@@ -20,6 +20,7 @@ namespace TestApp
         [OperationContract(IsOneWay = true)]
         void SendMsg(string msg, int id);
 
+
     }
 
     public interface IServerChatCallback
