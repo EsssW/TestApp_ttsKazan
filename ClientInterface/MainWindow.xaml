@@ -6,26 +6,31 @@
         xmlns:local="clr-namespace:ClientInterface"
         mc:Ignorable="d"
         Title="MainWindow"
-        Width="1000" Height="800"
+        Width="300" Height="200"
         
         >
-    <Grid Background="LightCyan">
+    <Grid Background="LightCyan" MouseDown="Grid_MouseDown" >
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.3*"/>
-            <ColumnDefinition Width="0.3*"/>
-            <ColumnDefinition />
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Content="Старт" Grid.Row="0" Grid.Column="0"/>
-        <Button Content="Стоп" Grid.Row="0" Grid.Column="1"/>
+        <Button Content="Старт" Grid.Row="0" Grid.Column="0" Click="Start_btn_Click"/>
+        <Button Content="Стоп" Grid.Row="0" Grid.Column="1" Click="Stop_btn_Click"/>
 
-        <Grid x:Name="WorkGrid" MouseWheel="MainWindow_OnMouseWheel" Background="LightGray" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Cursor="Cross" MouseDown="WorkGrid_MouseDown">
-            
+        <Grid Grid.Row="0" Grid.Column="3" Background="Gray">
+            <TextBlock Text="Позиция мыши:" Width="115" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"></TextBlock>
+            <TextBlock x:Name="mous_pos_tb" Text="(111;222)" Width="80" Margin="102,0,0,0" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
+        </Grid>
+
+        <Grid x:Name="WorkGrid" Background="LightGray" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Cursor="Cross" >
+            <TextBlock x:Name="info" Text="ddddd"/>
         </Grid>
     </Grid>
 </Window>
