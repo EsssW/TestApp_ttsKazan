@@ -13,7 +13,9 @@ namespace ClientInterface
     /// </summary>
     public partial class MainWindow : Window
     {
-        CancellationTokenSource cts = new CancellationTokenSource();
+        private CancellationTokenSource cts = new CancellationTokenSource();
+        private Mous mous;
+        private bool ActiveWrite = false;
 
         public MainWindow()
         {
@@ -43,6 +45,13 @@ namespace ClientInterface
             System.Drawing.Point p = System.Windows.Forms.Cursor.Position;
             // вывод в TextBox
             mous_pos_tb.Text = p.X + " " + p.Y;
+
+            mous.X = (ushort)p.X;
+            mous.Y = (ushort)p.Y;
+
+            info.Text = mous.msg;
+
+
         }
 
         private void Start_btn_Click(object sender, RoutedEventArgs e)
@@ -50,12 +59,31 @@ namespace ClientInterface
             cts.Dispose(); // Очистка старого 
             cts = new CancellationTokenSource(); // "сброс"
 
+            System.Drawing.Point p = System.Windows.Forms.Cursor.Position;
+
+            mous = new Mous()
+            {
+                Id = 1,
+                X = (ushort)p.X,
+                Y = (ushort)p.Y
+            };
+
             KeepReportMousePos(cts.Token);
         }
 
         private void Stop_btn_Click(object sender, RoutedEventArgs e)
         {
             cts.Cancel();
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                info.Text += "\n Клик левой ";
+            if (e.ChangedButton == MouseButton.Right)
+                info.Text += "\n Клик правой ";
+            if (e.ChangedButton == MouseButton.Middle)
+                info.Text += "\n Клик центральной ";
         }
     }
 }
