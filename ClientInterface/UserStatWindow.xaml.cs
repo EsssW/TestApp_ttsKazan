@@ -32,17 +32,7 @@ namespace ClientInterface
 
             dataGrid.ItemsSource = mainDataList;
         }
-        
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void applyBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+       
         private void eventType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // получаем название выбранного типа mouseEven
