@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="MouseEventService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TestApp" />
+      <xsd:import schemaLocation="http://localhost:8301/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/TestApp.DB" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMouseEventContract_StartRecording_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartRecording" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_StartRecording_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartRecordingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_StopRecording_InputMessage">
+    <wsdl:part name="parameters" element="tns:StopRecording" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_StopRecording_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StopRecordingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_GetRecordingStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecordingStatus" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_GetRecordingStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecordingStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_GetMousEvents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMousEvents" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_GetMousEvents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMousEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_GetMousEventById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMousEventById" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_GetMousEventById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMousEventByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_AddNewMousEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewMousEvent" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_AddNewMousEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewMousEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_RemoveMousEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveMousEvent" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_RemoveMousEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveMousEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_UpdateMousEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMousEvent" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_UpdateMousEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMousEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_GetMyMousEventCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyMousEventCount" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_GetMyMousEventCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyMousEventCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_SignIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:SignIn" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_SignIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SignInResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_Registration_InputMessage">
+    <wsdl:part name="parameters" element="tns:Registration" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_Registration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_IsAdmin_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsAdmin" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_IsAdmin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_SendEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendEmail" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_SendEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_SendSms_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendSms" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_SendSms_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendSmsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_GetUsersStatistic_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersStatistic" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_GetUsersStatistic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsersStatisticResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_GetUserStatisticById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserStatisticById" />
+  </wsdl:message>
+  <wsdl:message name="IMouseEventContract_GetUserStatisticById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserStatisticByIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMouseEventContract">
+    <wsdl:operation name="StartRecording">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/StartRecording" message="tns:IMouseEventContract_StartRecording_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/StartRecordingResponse" message="tns:IMouseEventContract_StartRecording_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StopRecording">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/StopRecording" message="tns:IMouseEventContract_StopRecording_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/StopRecordingResponse" message="tns:IMouseEventContract_StopRecording_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecordingStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/GetRecordingStatus" message="tns:IMouseEventContract_GetRecordingStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/GetRecordingStatusResponse" message="tns:IMouseEventContract_GetRecordingStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMousEvents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/GetMousEvents" message="tns:IMouseEventContract_GetMousEvents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/GetMousEventsResponse" message="tns:IMouseEventContract_GetMousEvents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMousEventById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/GetMousEventById" message="tns:IMouseEventContract_GetMousEventById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/GetMousEventByIdResponse" message="tns:IMouseEventContract_GetMousEventById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewMousEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/AddNewMousEvent" message="tns:IMouseEventContract_AddNewMousEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/AddNewMousEventResponse" message="tns:IMouseEventContract_AddNewMousEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMousEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/RemoveMousEvent" message="tns:IMouseEventContract_RemoveMousEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/RemoveMousEventResponse" message="tns:IMouseEventContract_RemoveMousEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMousEvent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/UpdateMousEvent" message="tns:IMouseEventContract_UpdateMousEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/UpdateMousEventResponse" message="tns:IMouseEventContract_UpdateMousEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMousEventCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/GetMyMousEventCount" message="tns:IMouseEventContract_GetMyMousEventCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/GetMyMousEventCountResponse" message="tns:IMouseEventContract_GetMyMousEventCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SignIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/SignIn" message="tns:IMouseEventContract_SignIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/SignInResponse" message="tns:IMouseEventContract_SignIn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Registration">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/Registration" message="tns:IMouseEventContract_Registration_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/RegistrationResponse" message="tns:IMouseEventContract_Registration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsAdmin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/IsAdmin" message="tns:IMouseEventContract_IsAdmin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/IsAdminResponse" message="tns:IMouseEventContract_IsAdmin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/SendEmail" message="tns:IMouseEventContract_SendEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/SendEmailResponse" message="tns:IMouseEventContract_SendEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSms">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/SendSms" message="tns:IMouseEventContract_SendSms_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/SendSmsResponse" message="tns:IMouseEventContract_SendSms_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersStatistic">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/GetUsersStatistic" message="tns:IMouseEventContract_GetUsersStatistic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/GetUsersStatisticResponse" message="tns:IMouseEventContract_GetUsersStatistic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserStatisticById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMouseEventContract/GetUserStatisticById" message="tns:IMouseEventContract_GetUserStatisticById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMouseEventContract/GetUserStatisticByIdResponse" message="tns:IMouseEventContract_GetUserStatisticById_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IMouseEventContract" type="tns:IMouseEventContract">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="StartRecording">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/StartRecording" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopRecording">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/StopRecording" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecordingStatus">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/GetRecordingStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMousEvents">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/GetMousEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMousEventById">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/GetMousEventById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewMousEvent">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/AddNewMousEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveMousEvent">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/RemoveMousEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMousEvent">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/UpdateMousEvent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyMousEventCount">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/GetMyMousEventCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignIn">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/SignIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Registration">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/Registration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsAdmin">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/IsAdmin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/SendEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSms">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/SendSms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersStatistic">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/GetUsersStatistic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserStatisticById">
+      <soap:operation soapAction="http://tempuri.org/IMouseEventContract/GetUserStatisticById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MouseEventService">
+    <wsdl:port name="BasicHttpBinding_IMouseEventContract" binding="tns:BasicHttpBinding_IMouseEventContract">
+      <soap:address location="http://localhost:8301/TestApp.MouseEventService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

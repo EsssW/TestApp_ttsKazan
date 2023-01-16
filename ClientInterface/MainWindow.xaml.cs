@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ClientInterface.MyService;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
+using Brushes = System.Windows.Media.Brushes;
 
 namespace ClientInterface
 {
@@ -13,13 +14,26 @@ namespace ClientInterface
     /// </summary>
     public partial class MainWindow : Window
     {
+        // переменная для отправки и получения состояния задачи
         private CancellationTokenSource cts = new CancellationTokenSource();
-        private Mous mous;
-        private bool ActiveWrite = false;
+        // переменая для работы с сервисом
+        public MyService.MouseEventContractClient obj = new MouseEventContractClient();
+        private Mous mous = new Mous(); // переменная для сохранения состояния мыши
+        private bool mousChekIsActive = false; // состояние Записи (начата/не начата)
+        
+        public MainWindow() { }
 
-        public MainWindow()
+        public MainWindow(int userId )
         {
             InitializeComponent();
+            mous.UserId = userId; // Для глобальной переменной задаем UserId для дальнейщей работы
+            eventCount_Tb.Text = obj.GetMyMousEventCount(userId).ToString(); // выводим количество записей данного пользователя
+        }
+
+        private void info_Loaded(object sender, RoutedEventArgs e)
+        {
+            //var staticsticWind = new UserStatWindow(mous.UserId);
+            //staticsticWind.Show();
         }
 
         public void KeepReportMousePos(CancellationToken cancelToken)
@@ -49,41 +63,94 @@ namespace ClientInterface
             mous.X = (ushort)p.X;
             mous.Y = (ushort)p.Y;
 
-            info.Text = mous.msg;
-
-
+            // получение обновленного числа записей
+            int mouseEventsCount = obj.GetMyMousEventCount(mous.UserId);
+            eventCount_Tb.Text = mouseEventsCount.ToString();
+            // если кол-во записей кратно 50и отправляем письмо пользователю
+            if (mouseEventsCount % 50 == 0)
+            {
+                obj.SendEmail(mous.UserId, $"Вы сделали еще 50 действий мышью.\nОбщее количество действий ={mouseEventsCount}");
+            }
         }
 
         private void Start_btn_Click(object sender, RoutedEventArgs e)
         {
-            cts.Dispose(); // Очистка старого 
+            
+            // исключение возможности нажать "Старт" если запись уже начата
+            if (mousChekIsActive == true)
+                return;
+
+            //Вызов на сервере метода для лоигрования начала записи клиента
+            //В качестве параметра передается id текущего клиента
+            obj.StartRecording(mous.UserId);
+
+            mousChekIsActive = true; // запись начата
+            cts.Dispose(); // Очистка старого токена
             cts = new CancellationTokenSource(); // "сброс"
 
-            System.Drawing.Point p = System.Windows.Forms.Cursor.Position;
-
-            mous = new Mous()
-            {
-                Id = 1,
-                X = (ushort)p.X,
-                Y = (ushort)p.Y
-            };
+            workGridText_TB.Text = "Запись Начата";
+            workGrid.Background = Brushes.Green;
 
             KeepReportMousePos(cts.Token);
         }
 
         private void Stop_btn_Click(object sender, RoutedEventArgs e)
         {
+            // исключение возможности нажать "Стоп" если запись еще на начата
+            if (mousChekIsActive == false)
+                return;
+
+            obj.StopRecording(mous.UserId);
+            mousChekIsActive = false; // запись окончена
+            workGridText_TB.Text = "Запись Остановлена";
+            workGrid.Background = Brushes.LightGray;
             cts.Cancel();
         }
 
+        // Событие нажатия кнопки мыши на рабочей области
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
-                info.Text += "\n Клик левой ";
-            if (e.ChangedButton == MouseButton.Right)
-                info.Text += "\n Клик правой ";
-            if (e.ChangedButton == MouseButton.Middle)
-                info.Text += "\n Клик центральной ";
+            // если запись не начала, то следющий код выполнять не нужно
+            if (mousChekIsActive == false)
+                return;
+
+            // получение текущей позици мыши
+            System.Drawing.Point p = System.Windows.Forms.Cursor.Position;
+            mous.X = (ushort)p.X;
+            mous.Y = (ushort)p.Y;
+
+            // Определение какая кнопка мыши была нажата и запись события клика в бд
+            switch (e.ChangedButton)
+            {
+                case MouseButton.Left:
+                    mous.ChangeMousEventType(MousEventType.LeftClick);
+                    break;
+
+                case MouseButton.Right:
+                    mous.ChangeMousEventType(MousEventType.RightClick);
+                    break;
+
+                case MouseButton.Middle:
+                    mous.ChangeMousEventType(MousEventType.MidleClick);
+                    break;
+            }
+        }
+
+        private void userStat_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            var userStatWind = new UserStatWindow(mous.UserId);
+            userStatWind.Show();
+
+            if (obj.IsAdmin(mous.Id) != true)
+            {
+                var adminStatWind = new AdminStatWindow();
+                adminStatWind.Show();
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            obj.StopRecording(mous.UserId);
         }
     }
 }

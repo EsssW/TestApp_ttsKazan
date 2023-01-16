@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
+using TestApp;
 
 namespace Host
 {
@@ -11,9 +8,19 @@ namespace Host
     {
         static void Main(string[] args)
         {
-            using (var host = new ServiceHost(typeof(TestApp.ServiceChat)))
+            Console.Title = "Server HOST";
+
+
+            using (var host = new ServiceHost(typeof(MouseEventService)))
             {
+                //ServiceHost serviceHost = new ServiceHost(typeof(Service), new Uri("http://localhost:8301"));
+                //serviceHost.AddServiceEndpoint(typeof(IContract), new BasicHttpBinding(), "");
+
+                //serviceHost.Open();
+
                 host.Open();
+
+                
                 Console.WriteLine("HOST is Start");
                 Console.ReadLine();
                 Console.ReadLine();

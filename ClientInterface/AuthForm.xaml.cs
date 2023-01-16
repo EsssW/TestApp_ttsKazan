@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ClientInterface.MyService;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ClientInterface
 {
@@ -35,7 +26,24 @@ namespace ClientInterface
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            MyService.MouseEventContractClient obj = new MouseEventContractClient();
 
+            string login = tbLogin.Text;
+            string password = passwordBox1.Password;
+
+            int userId = obj.SignIn(login,password);
+
+            if(userId != -1)
+            {
+                MessageBox.Show("Successful authorization");
+                var win = new MainWindow(userId);
+                win.Show();
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("incorrect password or login, try again");
+            }
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)

@@ -1,8 +1,5 @@
-﻿using System;
-using System.ServiceModel;
+﻿
 using System.Runtime.Serialization;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TestApp
 {
@@ -10,16 +7,12 @@ namespace TestApp
     public  class MousEvent
     {
         [DataMember]
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [DataMember]
-        [Required]
         public int UserId { get; set; }
 
         [DataMember]
-        [Required]
         public string eventName { get; set; }
 
         [DataMember]
@@ -28,10 +21,10 @@ namespace TestApp
         public ushort? mousY_pos { get; set; }
 
         [DataMember]
-        public DateTime eventTime { get; set; }
+        public string eventTime { get; set; }
 
-
-
+        [DataMember]
+        public ServerUser user { get; set; }
 
     }
 }

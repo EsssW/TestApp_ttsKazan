@@ -3,13 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ClientInterface"
         mc:Ignorable="d"
         Title="MainWindow"
-        Width="300" Height="200"
-        
+        Width="800" Height="500" Closing="Window_Closing"
         >
-    <Grid Background="LightCyan" MouseDown="Grid_MouseDown" >
+    <Grid Background="LightCyan" >
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition/>
@@ -27,10 +25,25 @@
         <Grid Grid.Row="0" Grid.Column="3" Background="Gray">
             <TextBlock Text="Позиция мыши:" Width="115" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"></TextBlock>
             <TextBlock x:Name="mous_pos_tb" Text="(111;222)" Width="80" Margin="102,0,0,0" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
+            <TextBlock HorizontalAlignment="Right" Text="Ваше количество записей:" Width="170" Margin="0,0,120,0" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+            <TextBlock x:Name="eventCount_Tb" HorizontalAlignment="Right" Text="000" Width="50" Margin="0,0,80,0" TextAlignment="Center" VerticalAlignment="Center" ></TextBlock>
+            <Button x:Name="userStat_Btn" Width="70" HorizontalAlignment="Right" Content="Статистика" Click="userStat_Btn_Click"/>
         </Grid>
 
-        <Grid x:Name="WorkGrid" Background="LightGray" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Cursor="Cross" >
-            <TextBlock x:Name="info" Text="ddddd"/>
+        <Grid MouseDown="Grid_MouseDown" x:Name="WorkGrid" Background="LightGray" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Cursor="Cross" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="info" Text="" Grid.ColumnSpan="2" Loaded="info_Loaded"/>
+        </Grid>
+        <Grid Background="LightGray" x:Name="workGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <TextBlock x:Name="workGridText_TB" Text="Рабочая область (Клики мышки)" 
+                   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="48" FontFamily="Bahnschrift Light" FontWeight="Bold"
+                   
+                   />
         </Grid>
     </Grid>
 </Window>

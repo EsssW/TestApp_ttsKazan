@@ -46,7 +46,7 @@
             <TextBlock Height="20" HorizontalAlignment="Left" Margin="67,0,0,0" x:Name ="errormessage" VerticalAlignment="Top" Width="247"  OpacityMask="Crimson" Foreground="#FFE5572C" />
             <TextBlock Height="23" HorizontalAlignment="Left" Margin="35,20,0,0" Name="textBlockFirstname" Text="Login:" VerticalAlignment="Top" Width="110" FontWeight="Bold" />
             <TextBlock Height="23" HorizontalAlignment="Left" Margin="35,50,0,0" Name="textBlockPassword" Text="Password:" VerticalAlignment="Top" Width="110" FontWeight="Bold"  />
-            <TextBox Height="23" HorizontalAlignment="Left" Margin="100,20,0,0" Name="textBoxFirstName" VerticalAlignment="Top" Width="222" />
+            <TextBox Height="23" HorizontalAlignment="Left" Margin="100,20,0,0" Name="tbLogin" VerticalAlignment="Top" Width="222" />
             <PasswordBox Height="23" HorizontalAlignment="Left" Margin="100,50,0,0" Name="passwordBox1" VerticalAlignment="Top" Width="222" />
             <!--For password-->
             <Button Content="Войти" Height="25" HorizontalAlignment="Left" Margin="100,85,0,0" Name="Submit" VerticalAlignment="Top" Width="100" Click="Login_Click" />

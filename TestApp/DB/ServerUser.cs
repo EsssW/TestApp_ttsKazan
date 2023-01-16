@@ -1,8 +1,7 @@
-﻿using SQLite.CodeFirst;
+﻿
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
-using System.ServiceModel;
 
 namespace TestApp
 {
@@ -10,29 +9,31 @@ namespace TestApp
     public class ServerUser
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [DataMember]
         public int Id { get; set; }
 
-        [Unique]
-        [Required]
         [DataMember]
         public string Name { get; set; }
 
-        [Required]
         [DataMember]
         public string Login { get; set; }
 
-        [Required]
         [DataMember]
         public string Password { get; set; }
 
-        [Required]
         [DataMember]
         public string Email {get; set; }
-        [Required]
+
         [DataMember]
         public string Phone {get; set; }
+
+        [DataMember]
+        public int IsAdmin { get; set; }
+
+        [DataMember]
+        public List<MousEvent> mousEvents { get; set; }
+
+
 
     }
 }

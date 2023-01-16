@@ -1,23 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using ClientInterface.MyService;
+using System;
 
 namespace ClientInterface
 {
-    internal class Mous
+    public enum MousEventType
+    {
+        LeftClick, RightClick, MidleClick, OffsetX, OffsetY
+    }
+    public class Mous
     {
         public int Id { get; set; }
 
         private ushort x;
         private ushort y;
 
-        private ushort prev_X = 0;
-        private ushort prev_Y = 0;
+        private ushort prev_X { get; set; }
+        private ushort prev_Y { get;set; }
 
         public string msg { get; set; }
+        public int UserId { get; set; }
+
+        private MousEventType mousEventType { get; set; }
 
         public ushort X
         {
@@ -26,29 +29,43 @@ namespace ClientInterface
             set
             {
                 prev_X = x;
-                y = value;
+                x = value;
                 
-                if(Math.Abs(y - prev_X) >= 100)
+                if(Math.Abs(prev_X - x) >= 100)
                 {
-                    msg = $"{prev_X} --> {x}";
+                    ChangeMousEventType(MousEventType.OffsetX);
                 }
             }
         }
 
         public ushort Y
         {
-            get { return prev_Y; }
+            get { return y; }
 
             set
             {
                 prev_Y = y;
                 y = value;
 
-                if (Math.Abs(y - prev_Y) >= 100)
+                if (Math.Abs(prev_Y - y) >= 100)
                 {
-                    msg = $"{prev_Y} --> {y}";
+                    ChangeMousEventType(MousEventType.OffsetY);
                 }
             }
-        } 
+        }
+
+        public void ChangeMousEventType(MousEventType type)
+        {
+            var obj = new MouseEventContractClient();
+            mousEventType = type;
+            obj.AddNewMousEventAsync(new MousEvent()
+            {
+                UserId = this.UserId,
+                eventName = type.ToString(),
+                mousX_pos = this.x,
+                mousY_pos = this.y,
+                eventTime = DateTime.Now.ToString()
+            });
+        }
     }
 }
