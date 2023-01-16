@@ -141,7 +141,7 @@ namespace ClientInterface
             var userStatWind = new UserStatWindow(mous.UserId);
             userStatWind.Show();
 
-            if (obj.IsAdmin(mous.Id) != true)
+            if (obj.IsAdmin(mous.UserId))
             {
                 var adminStatWind = new AdminStatWindow();
                 adminStatWind.Show();
