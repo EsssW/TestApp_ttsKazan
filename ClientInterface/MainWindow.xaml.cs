@@ -29,13 +29,7 @@ namespace ClientInterface
             mous.UserId = userId; // Для глобальной переменной задаем UserId для дальнейщей работы
             eventCount_Tb.Text = obj.GetMyMousEventCount(userId).ToString(); // выводим количество записей данного пользователя
         }
-
-        private void info_Loaded(object sender, RoutedEventArgs e)
-        {
-            //var staticsticWind = new UserStatWindow(mous.UserId);
-            //staticsticWind.Show();
-        }
-
+        
         public void KeepReportMousePos(CancellationToken cancelToken)
         {
             //Создание и запуск Задачи для делагата
