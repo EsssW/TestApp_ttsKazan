@@ -35,7 +35,7 @@
                 <ColumnDefinition Width="0*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="info" Text="" Grid.ColumnSpan="2" Loaded="info_Loaded"/>
+            <TextBlock x:Name="info" Text="" Grid.ColumnSpan="2"/>
         </Grid>
         <Grid Background="LightGray" x:Name="workGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2">
             <TextBlock x:Name="workGridText_TB" Text="Рабочая область (Клики мышки)" 
